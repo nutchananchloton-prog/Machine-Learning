@@ -11,7 +11,7 @@ import streamlit as st
 
 used_car_model = pickle.load(open('Used_cars_model.sav','rb'))
 riding_model = pickle.load(open('RidingMowers_model.sav','rb'))
-bmi_model = pickle.load(open('bmi_model.sav','rb'))
+bmi_model = pickle.load(open('bmi.sav','rb'))
 
 
 fuel_map = {
@@ -53,6 +53,24 @@ transmission_map = {
 with st.sidebar:
     selected = option_menu('Prediction',
                            ['Ridingmower','Used_cars','BMI'])
+
+if selected== 'BMI':
+    st.title('BMI Classification')
+    
+    Income = st.text_input('Income')
+    LotSize = st.text_input('LotSize')
+    Riding_prediction = ''
+    if st.button('Predict'):
+        Riding_prediction = riding_model.predict([[
+            float(Income),
+            float(LotSize)
+            ]])
+        if Riding_prediction[0]==1:
+            Riding_prediction = 'Owner'
+        else:
+            Riding_prediction = 'Non Owner'
+    st.success(Riding_prediction)
+
 
 if selected== 'Ridingmower':
     st.title('Riding Mower Classification')
@@ -96,4 +114,5 @@ if selected == 'Used_cars':
         Price_predict = round(Price_predict[0],2)
 
     st.success(Price_predict)
+
 
