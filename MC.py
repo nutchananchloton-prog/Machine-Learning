@@ -112,7 +112,7 @@ if selected == 'Used_cars':
  
 # --- BMI Section ---
 
-if selected == 'BMI':
+if selected == 'bmi':
 
     st.title('BMI Prediction')
 
@@ -145,4 +145,5 @@ if selected == 'BMI':
         st.success(f'ผลการวิเคราะห์: {description}')
  
  
+
 
