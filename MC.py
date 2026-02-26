@@ -11,7 +11,7 @@ import streamlit as st
 
 used_car_model = pickle.load(open('Used_cars_model.sav','rb'))
 riding_model = pickle.load(open('RidingMowers_model.sav','rb'))
-bmi_model = pickle.load(open('bmi.csv','rb'))
+bmi_model = pickle.load(open('bmi_model.csv','rb'))
 
 
 fuel_map = {
@@ -114,6 +114,7 @@ if selected == 'Used_cars':
         Price_predict = round(Price_predict[0],2)
 
     st.success(Price_predict)
+
 
 
 
